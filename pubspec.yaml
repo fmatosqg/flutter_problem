@@ -25,6 +25,25 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+
+  # downloaded both mdpi (1x) and xxhdpi (3x)
+  # https://github.com/google/material-design-icons/blob/master/alert/drawable-mdpi/ic_error_outline_black_36dp.png?raw=true
+  # https://github.com/google/material-design-icons/blob/master/alert/drawable-xxhdpi/ic_error_outline_black_36dp.png?raw=true
+    - assets/ic_error_outline_black_36dp.png
+
+  # only downloaded xxhdpi (3x) from
+  # https://github.com/google/material-design-icons/blob/master/alert/drawable-xxhdpi/ic_warning_black_36dp.png?raw=true
+    - assets/ic_warning_black_36dp.png
+
+  # downloaded xxhdpi (3x) image but added as a mdpi (1x)
+  # https://github.com/google/material-design-icons/blob/master/alert/drawable-xxhdpi/ic_error_black_36dp.png?raw=true
+    - assets/ic_error_black_36dp.png
+
+  # Side effect of Option B
+  # Asset bundle is not smart and shouldn't be, to allow smarter variants in the future
+  # https://github.com/google/material-design-icons/blob/master/action/drawable-xxhdpi/ic_accessibility_black_36dp.png?raw=true
+    - assets/3.0x/ic_accessibility_black_36dp.png  # ### <==== this is not the correct path =====>
 
   # To add assets to your application, add an assets section, like this:
   # assets:

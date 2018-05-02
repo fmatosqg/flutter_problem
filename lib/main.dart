@@ -96,6 +96,46 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+
+            ///////// Option A
+            new Row(
+              children: <Widget>[
+                new Text('Option A:'),
+                new Image.asset(
+                  'assets/ic_error_outline_black_36dp.png',
+                ),
+                new Image.asset(
+                  'assets/ic_warning_black_36dp.png',
+                ),
+              ],
+            ),
+
+            ///////// Option B
+            new Row(
+              children: <Widget>[
+                new Text('Option B:'),
+                new Image.asset(
+                  'assets/ic_error_outline_black_36dp.png',
+                ),
+                new Image.asset(
+                  'assets/ic_error_black_36dp.png',
+                ),
+              ],
+            ),
+
+
+            ///////// Something to investigate
+            new Row(
+              children: <Widget>[
+                new Text('Side effect of option B:'),
+                new Image.asset(
+                  'assets/ic_error_outline_black_36dp.png',
+                ),
+                new Image.asset(
+                  'assets/3.0x/ic_accessibility_black_36dp.png', // <-- this is not the correct path
+                ),
+              ],
+            ),
           ],
         ),
       ),
