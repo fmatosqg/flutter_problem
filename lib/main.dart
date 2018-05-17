@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() => runApp(new MyApp());
 
@@ -8,9 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Flutter Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: buildTheme(Colors.blue),
       home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -44,12 +43,34 @@ class _MyHomePageState extends State<MyHomePage> {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Text(
-              'You have pushed the button this many times:',
+            new SubtreeText('Hello world - tentative blue'),
+            new Theme(
+              data: buildTheme(Colors.red),
+              child: new SubtreeText('Hello world - tentative red'),
             ),
-            new Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            new Theme(
+              data: Theme.of(context).copyWith(
+                    iconTheme: IconThemeData(
+                      color: Colors.orange,
+                    ),
+                  ),
+              child: new Icon(
+                Icons.build,
+                color: Colors.red,
+              ),
+            ),
+            new Theme(
+              data: Theme.of(context).copyWith(
+                    iconTheme: IconThemeData(
+                      color: Colors.orange,
+                    ),
+                  ),
+              child: new ImageIcon(NetworkImage(
+                  'https://github.com/google/material-design-icons/blob/master/alert/drawable-xxxhdpi/ic_error_outline_black_36dp.png?raw=true')),
+            ),
+            SvgImage.network(
+              'https://github.com/google/material-design-icons/blob/master/alert/svg/production/ic_warning_36px.svg?raw=true',
+              Size(IconTheme.of(context).size, IconTheme.of(context).size),
             ),
           ],
         ),
@@ -60,5 +81,35 @@ class _MyHomePageState extends State<MyHomePage> {
         child: new Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class SubtreeText extends StatelessWidget {
+  final String text;
+
+  SubtreeText(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    ThemeData data = Theme.of(context);
+    return Text(
+      text,
+      style: data.textTheme.body1,
+    );
+  }
+}
+
+ThemeData buildTheme(Color textColor) {
+  return new ThemeData(
+    textTheme: new TextTheme(
+      body1: new TextStyle(color: textColor),
+    ),
+  );
+}
+
+class ThemedIcon extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Icon(Icons.add);
   }
 }
