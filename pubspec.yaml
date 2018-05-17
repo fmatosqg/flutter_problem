@@ -57,3 +57,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies, 
   # see https://flutter.io/custom-fonts/#from-packages
+
+environment:
+  flutter: 0.4.3-pre.69
